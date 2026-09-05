@@ -1,0 +1,45 @@
+[
+  {
+    "adArchiveId": "104857692014523",
+    "pageId": "40796308305",
+    "pageName": "The Coca-Cola Company",
+    "adTitle": "Taste the Feeling",
+    "adBody": "Real Magic happens when we come together. Discover our new summer campaign with zero sugar refreshment.",
+    "callToActionType": "LEARN_MORE",
+    "linkUrl": "https://www.coca-cola.com/us/en",
+    "publisherPlatforms": [
+      "FACEBOOK",
+      "INSTAGRAM",
+      "MESSENGER"
+    ],
+    "mediaType": "VIDEO",
+    "videoHdUrl": "https://video.xx.fbcdn.net/v/t42.1790-2/...",
+    "imageUrl": "https://scontent.xx.fbcdn.net/v/t39.35426-6/...",
+    "canonicalAssetId": "sha256:4a8b79f2e...",
+    "firstSeen": "2026-08-20T10:00:00.000Z",
+    "lastShown": "2026-09-05T07:30:00.000Z",
+    "lifecycleEvent": "VERIFIED_CHANGE",
+    "changedFields": [
+      "adBody"
+    ]
+  },
+  {
+    "adArchiveId": "104857692014999",
+    "pageId": "40796308305",
+    "pageName": "The Coca-Cola Company",
+    "adTitle": "New Flavor Launch",
+    "adBody": "Try the all-new Spiced Raspberry blend today.",
+    "callToActionType": "SHOP_NOW",
+    "linkUrl": "https://www.coca-cola.com/products/spiced",
+    "publisherPlatforms": [
+      "INSTAGRAM"
+    ],
+    "mediaType": "IMAGE",
+    "imageUrl": "https://scontent.xx.fbcdn.net/v/t39.35426-6/...",
+    "canonicalAssetId": "sha256:8f7e6d5c...",
+    "firstSeen": "2026-09-05T07:30:00.000Z",
+    "lastShown": "2026-09-05T07:30:00.000Z",
+    "lifecycleEvent": "NEW_LAUNCH_FEED",
+    "changedFields": []
+  }
+]
