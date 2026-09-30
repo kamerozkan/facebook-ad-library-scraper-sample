@@ -1,4 +1,8 @@
-# Facebook Ad Library Scraper & Competitor Monitor Sample
+# Facebook Ad Library Scraper - Competitor Ad Monitor: Samples
+
+Facebook Ad Library scraper and competitor ad monitor for exact Meta Pages. Collect active Facebook and Instagram ads without login or an API key. Export ad copy, links, media and platforms, with verified new, stopped, resumed and asset-change events across runs.
+
+[Run Facebook Ad Library Scraper - Competitor Ad Monitor on Apify](https://apify.com/kamerozkan/facebook-ad-library-change-monitor)
 
 [![Apify Actor](https://img.shields.io/badge/Apify-Actor-blue?logo=apify)](https://apify.com/kamerozkan/facebook-ad-library-change-monitor)
 [![Pricing](https://img.shields.io/badge/Pricing-Pay--Per--Event-brightgreen)](https://apify.com/kamerozkan/facebook-ad-library-change-monitor)
@@ -50,7 +54,7 @@ run_input = {
 run = client.actor("kamerozkan/facebook-ad-library-change-monitor").call(run_input=run_input)
 
 for item in client.dataset(run["defaultDatasetId"]).iterate_items():
-    print(f"[{item.get('lifecycleEvent')}] Ad {item.get('adArchiveId')} — {item.get('pageName')}")
+    print(f"[{item.get('lifecycleEvent')}] Ad {item.get('adArchiveId')} - {item.get('pageName')}")
     print(f"  Title: {item.get('adTitle')}")
     print(f"  CTA: {item.get('callToActionType')} -> {item.get('linkUrl')}")
     print(f"  First Seen: {item.get('firstSeen')} | Last Shown: {item.get('lastShown')}\n")

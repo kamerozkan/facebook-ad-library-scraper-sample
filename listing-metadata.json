@@ -1,0 +1,15 @@
+{
+  "id": "ZFjVfFgEdFJomArAb",
+  "name": "facebook-ad-library-change-monitor",
+  "title": "Facebook Ad Library Scraper - Competitor Ad Monitor",
+  "description": "Facebook Ad Library scraper and competitor ad monitor for exact Meta Pages. Collect active Facebook and Instagram ads without login or an API key. Export ad copy, links, media and platforms, with verified new, stopped, resumed and asset-change events across runs.",
+  "seoTitle": "Facebook Ad Library Scraper & Competitor Monitor",
+  "seoDescription": "Scrape active Facebook and Instagram ads from exact Meta Pages without login. Export copy, links and media, then monitor verified ad changes across runs.",
+  "isPublic": true,
+  "url": "https://apify.com/kamerozkan/facebook-ad-library-change-monitor",
+  "checkedAt": "2026-09-30",
+  "changeScope": "listing metadata and sample documentation only",
+  "runtimeChanged": false,
+  "schemasChanged": false,
+  "examplesRegenerated": false
+}
