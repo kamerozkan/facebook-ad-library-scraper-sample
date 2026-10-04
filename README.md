@@ -26,41 +26,41 @@ Track active ad creatives, copy changes, landing pages, and quiet campaign shutd
 
 ---
 
+## Saved API starter on October 4, 2026
+
+[example_run_input.json](example_run_input.json) is the exact saved API example: one public Page ID from the deployed schema prefill, country `US`, mode `AUTO`, at most ten ads and output mode `ALL_CHECKED`, with baseline inclusion enabled. It replaces an unrelated `helloWorld` placeholder. [Saved/schema evidence](maintenance-verification-2026-10-04.json). No new source run was performed; this does not prove that the public Page currently yields ads.
+
+Use this current file for the examples below. `input.sample.json` and `run_monitor.py` preserve older parameter names and are historical files, not the current quickstart. The output fixture below is also retained as a contract illustration, not relabeled as a fresh result.
+
 ## Quickstart (Python)
 
-Run the competitor monitor using the official `apify-client` Python SDK:
+Install Python client 3.x, set `APIFY_TOKEN` in your environment, then explicitly start a potentially billable run:
 
 ```bash
-pip install apify-client
+pip install 'apify-client>=3,<4'
 ```
 
 ```python
+import json
+import os
+from datetime import timedelta
+from decimal import Decimal
+from pathlib import Path
 from apify_client import ApifyClient
 
-# Initialize with your Apify API token
-client = ApifyClient("YOUR_APIFY_TOKEN")
-
-# Define target brand or page
-run_input = {
-    "searchMode": "page",
-    "pageId": "40796308305",  # e.g. Coca-Cola
-    "countries": ["US"],
-    "activeStatus": "ACTIVE",
-    "maxAds": 50,
-    "feedMode": "DIFF"
-}
-
-# Run the Actor and iterate over emitted ad events
-run = client.actor("kamerozkan/facebook-ad-library-change-monitor").call(run_input=run_input)
-
-for item in client.dataset(run["defaultDatasetId"]).iterate_items():
-    print(f"[{item.get('lifecycleEvent')}] Ad {item.get('adArchiveId')} - {item.get('pageName')}")
-    print(f"  Title: {item.get('adTitle')}")
-    print(f"  CTA: {item.get('callToActionType')} -> {item.get('linkUrl')}")
-    print(f"  First Seen: {item.get('firstSeen')} | Last Shown: {item.get('lastShown')}\n")
+client = ApifyClient(os.environ["APIFY_TOKEN"])
+run_input = json.loads(Path("example_run_input.json").read_text())
+run = client.actor("kamerozkan/facebook-ad-library-change-monitor").call(
+    run_input=run_input,
+    run_timeout=timedelta(seconds=300),
+    max_total_charge_usd=Decimal("0.10"),
+    logger=None,
+)
+if not run or run.status != "SUCCEEDED":
+    raise RuntimeError("Inspect the run and OUTPUT in Apify Console.")
+for item in client.dataset(run.default_dataset_id).iterate_items():
+    print(item)
 ```
-
----
 
 ## Quickstart (Node.js)
 
@@ -69,25 +69,21 @@ npm install apify-client
 ```
 
 ```javascript
+import { readFile } from 'node:fs/promises';
 import { ApifyClient } from 'apify-client';
 
-const client = new ApifyClient({
-    token: 'YOUR_APIFY_TOKEN',
+const client = new ApifyClient({ token: process.env.APIFY_TOKEN });
+const input = JSON.parse(await readFile('example_run_input.json', 'utf8'));
+const run = await client.actor('kamerozkan/facebook-ad-library-change-monitor').call(input, {
+    timeout: 300,
+    maxTotalChargeUsd: 0.10,
 });
-
-const run = await client.actor('kamerozkan/facebook-ad-library-change-monitor').call({
-    searchMode: 'keyword',
-    keyword: 'b2b saas',
-    countries: ['US', 'GB'],
-    maxAds: 25,
-});
-
+if (!run || run.status !== 'SUCCEEDED') throw new Error('Inspect the run and OUTPUT in Apify Console.');
 const { items } = await client.dataset(run.defaultDatasetId).listItems();
-console.log(`Fetched ${items.length} competitor ad creatives:`);
-for (const ad of items) {
-    console.log(`- [${ad.pageName}] ${ad.adTitle} -> ${ad.linkUrl}`);
-}
+console.log(items);
 ```
+
+Choose one client. Each execution starts a separate potentially billable run. The snippets set a paid-event limit, which does not cap all compute/proxy costs. Ten ads is a workload cap. Check `OUTPUT`, actual returned rows and source warnings before treating a result as a complete snapshot or a verified change. These snippets were not executed during the metadata repair.
 
 ---
 
@@ -120,13 +116,12 @@ for (const ad of items) {
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `searchMode` | Enum | `"page"` | Search by `"page"` (specific advertiser) or `"keyword"`. |
-| `pageId` | String | `""` | Meta Page ID or profile alias. |
-| `keyword` | String | `""` | Search term when in keyword search mode. |
-| `countries` | Array | `["US"]` | ISO 2-letter country codes to search. |
-| `activeStatus` | Enum | `"ACTIVE"` | `"ACTIVE"`, `"INACTIVE"`, or `"ALL"`. |
-| `maxAds` | Integer | `300` | Maximum number of ad creatives to scan per run. |
-| `feedMode` | Enum | `"DIFF"` | `"DIFF"` (only emit new/changed/stopped) or `"FULL_SNAPSHOT"`. |
+| `pageIds` | Array | Public schema prefill | Exact Meta Page IDs; starter has one. |
+| `country` | String | `US` in starter | Country scope for collection. |
+| `mode` | Enum | `AUTO` in starter | Collection mode from the deployed input schema. |
+| `maxAdsPerPage` | Integer | `10` in starter | Workload cap per requested Page. |
+| `outputMode` | Enum | `ALL_CHECKED` in starter | Preserve checked-row output for inspection. |
+| `includeBaseline` | Boolean | `true` in starter | Include baseline observations; not a new/change guarantee. |
 
 ---
 

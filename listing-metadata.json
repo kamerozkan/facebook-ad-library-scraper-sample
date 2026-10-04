@@ -8,8 +8,21 @@
   "isPublic": true,
   "url": "https://apify.com/kamerozkan/facebook-ad-library-change-monitor",
   "checkedAt": "2026-09-30",
-  "changeScope": "listing metadata and sample documentation only",
+  "changeScope": "Saved API exampleRunInput and matching sample documentation; runtime/build/schema/pricing unchanged",
   "runtimeChanged": false,
   "schemasChanged": false,
-  "examplesRegenerated": false
+  "examplesRegenerated": false,
+  "maintenanceVerifiedAt": "2026-10-04",
+  "apiExampleMaintenance": {
+    "date": "2026-10-04",
+    "evidence": "maintenance-verification-2026-10-04.json",
+    "inputFile": "example_run_input.json",
+    "savedReadbackMatches": true,
+    "schemaValidated": true,
+    "newActorRuns": 0,
+    "freshUsefulOutputVerified": false,
+    "runtimeChanged": false,
+    "pricingChanged": false,
+    "historicalExamplesRegenerated": false
+  }
 }

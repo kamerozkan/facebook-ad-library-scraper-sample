@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-04",
+  "actor": "kamerozkan/facebook-ad-library-change-monitor",
+  "actorId": "ZFjVfFgEdFJomArAb",
+  "scope": "Saved API exampleRunInput metadata and matching public JSON file only",
+  "savedAtUtc": "2026-10-03T23:49:45.297697+00:00",
+  "observedBuildNumber": "0.1.4",
+  "exampleFile": "example_run_input.json",
+  "exampleBodySha256": "ce4c65221abf3827067402ae22642bf4b90f09c3b42b8b5e0ff7076f2c9fda21",
+  "savedReadbackMatches": true,
+  "contentType": "application/json",
+  "schemaValidation": {
+    "jsonschemaVersion": "4.26.0",
+    "validator": "Draft202012Validator",
+    "schemaSha256": "4f0aa5af6979c30d9656f16e00c754cfe88f00d7d05ecb54a9c8467940c72e6b",
+    "schemaReferenceCount": 0,
+    "requiredTypeEnumRangeAdditionalPropertiesAndNestedConstraintsValidated": true,
+    "formatCheckerEnabled": true,
+    "beforeErrors": [
+      {
+        "path": [],
+        "rule": "additionalProperties"
+      }
+    ],
+    "afterErrors": []
+  },
+  "sourceProvenance": {
+    "kind": "Already-public deployed input-schema pageIds.prefill first item",
+    "targets": 1,
+    "encryptedOrCustomerTaskCopied": false
+  },
+  "publicFixtureRetrievals": [],
+  "protectedMetadataUnchanged": true,
+  "actorRuntimeChanged": false,
+  "actorBuildChanged": false,
+  "actorInputSchemaChanged": false,
+  "pricingChanged": false,
+  "newActorRuns": 0,
+  "freshUsefulOutputVerified": false,
+  "historicalOutputsRegenerated": false,
+  "limitations": [
+    "Template JSON/schema validation is not Actor output or live source acceptance.",
+    "Workload limits do not cap all account/compute/proxy costs; review pricing and spending limits before starting a run.",
+    "Existing dated output samples retain their original evidence class and collection times."
+  ]
+}
